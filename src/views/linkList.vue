@@ -42,7 +42,7 @@
           <el-button @click="handleClick(scope.row)" type="text" size="small"
             >查看</el-button
           >
-          <el-button type="text" size="small">编辑</el-button>
+          <el-button type="text" size="small" @click="dialogFormVisible = true">编辑</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -56,6 +56,38 @@
       :total="total"
     >
     </el-pagination>
+    <el-dialog title="编辑" :visible.sync="dialogFormVisible">
+  <el-form :model="link">
+    <el-form-item label="链接名称" :label-width="formLabelWidth">
+      <el-input v-model="link.name" autocomplete="off"></el-input>
+    </el-form-item>
+    <el-form-item label="URL" :label-width="formLabelWidth">
+      <el-input v-model="link.name" autocomplete="off"></el-input>
+    </el-form-item>
+    <el-form-item label="显示顺序" :label-width="formLabelWidth">
+      <el-input-number v-model="link.order" @change="handleChange" :min="0" label="显示顺序"></el-input-number>
+    </el-form-item>
+    <el-form-item label="状态" :label-width="formLabelWidth">
+      <el-select v-model="link.state" placeholder="状态">
+        <el-option label="有效" value="shanghai"></el-option>
+        <el-option label="无效" value="beijing"></el-option>
+      </el-select>
+    </el-form-item>
+    <el-form-item label="链接类型" :label-width="formLabelWidth">
+      <el-select v-model="link.type" placeholder="请选择链接类型">
+        <el-option label="类型1" value="shanghai"></el-option>
+        <el-option label="类型2" value="beijing"></el-option>
+      </el-select>
+    </el-form-item>
+    <el-form-item label="链接图标" :label-width="formLabelWidth">
+      <el-input v-model="link.pcFile" autocomplete="off"></el-input>
+    </el-form-item>
+  </el-form>
+  <div slot="footer" class="dialog-footer">
+    <el-button @click="dialogFormVisible = false">取 消</el-button>
+    <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+  </div>
+</el-dialog>
   </div>
 </template>
 <script>
@@ -76,6 +108,16 @@ export default {
       countData: [],
       images: [],
       currentPage4: 4,
+      dialogFormVisible: false,
+        link: {
+          name: '',
+          region: '',
+          order: 0,
+          state: '',
+          type: '',
+          pcFile: '',
+        },
+        formLabelWidth: '120px'
     };
   },
   components: {
@@ -85,6 +127,9 @@ export default {
     this.getLinks();
   },
   methods: {
+    handleChange(value) {
+        console.log(value);
+      },
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);
     },

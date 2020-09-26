@@ -16,8 +16,7 @@
             <template slot="title"
               ><i class="el-icon-document"></i>数据管理</template
             >
-            <el-menu-item index="linkList">用户列表</el-menu-item>
-            <el-menu-item index="linkList">管理员列表</el-menu-item>
+            <el-menu-item index="userList">用户列表</el-menu-item>
             <el-menu-item index="linkList">链接列表</el-menu-item>
           </el-submenu>
           <el-submenu index="3">
