@@ -45,19 +45,25 @@
                   class="infocard"
                   shadow="hover"
                 >
-                  <div style="width:100px;height:47px;">
+                  <div style="width: 100px; height: 47px">
                     <img
                       :src="
                         info.linkImage == ''
-                          ? 'http://www.4kbizhi.com/d/file/2020/09/05/small16585880eMw1599296338.jpg'
+                          ? 'http://img.netbian.com/file/2020/0828/24f6fab40f7cb88c6ab720e5182bbe2f.jpg'
                           : info.linkImage
                       "
                       :title="info.linkName"
-                      style="width:100%;height:100%;margin-left: 30%;"
+                      style="width: 100%; height: 100%; margin-left: 30%"
                     />
                   </div>
                   <a
-                    style="text-align: center;display: block;margin-top: 5px;font-family: 宋体;font-size: 16px;"
+                    style="
+                      text-align: center;
+                      display: block;
+                      margin-top: 5px;
+                      font-family: 宋体;
+                      font-size: 16px;
+                    "
                     @click="go(info.linkUrl)"
                     target="_blank"
                     :title="info.linkName"
@@ -155,7 +161,7 @@ export default {
       this.popup = false;
       this.register = false;
     },
-    getLjxx: function() {
+    getLjxx: function () {
       // 为给定 ID 的 user 创建请求
       axios.get("/api/link/getLink").then((res) => {
         console.log(res);
@@ -167,7 +173,7 @@ export default {
         this.tapvalue = res.data;
       });
     },
-    backgroundImg: function() {
+    backgroundImg: function () {
       var sjsz = Math.ceil(Math.random() * this.background.length);
       if (this.sjs == sjsz) {
         if (sjsz > 1) {
@@ -179,7 +185,7 @@ export default {
       this.sjs = sjsz;
       this.bodobj = this.background[sjsz - 1].img;
     },
-    mouseOver: function(index1, index2) {
+    mouseOver: function (index1, index2) {
       let r, g, b;
       r = Math.floor(Math.random() * 256);
       g = Math.floor(Math.random() * 256);
@@ -193,21 +199,21 @@ export default {
         b +
         ");transform: scale(1);transition: all 0.5s linear;";
     },
-    mouseLeave: function(index1, index2) {
+    mouseLeave: function (index1, index2) {
       this.tapvalue[index1].linkList[index2].style = "";
     },
-    bjxz: function() {
+    bjxz: function () {
       $("#img5").rotate({
         angle: 0,
         animateTo: 360,
         callback: this.bjxz,
-        easing: function(x, t, b, c, d) {
+        easing: function (x, t, b, c, d) {
           // t: current time, b: begInnIng value, c: change In value, d: duration
           return c * (t / d) + b;
         },
       });
     },
-    changebj: function() {
+    changebj: function () {
       this.backgroundImg();
     },
     openCenter(content, type) {

@@ -9,7 +9,7 @@
           text-color="#bfcbd9"
           router
         >
-          <el-menu-item index="menu"
+          <el-menu-item index="menuIndex"
             ><i class="el-icon-menu"></i>首页</el-menu-item
           >
           <el-submenu index="2">
@@ -65,7 +65,7 @@
 <script>
 export default {
   computed: {
-    defaultActive: function() {
+    defaultActive: function () {
       return this.$route.path.replace("/", "");
     },
   },

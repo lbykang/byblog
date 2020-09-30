@@ -9,8 +9,10 @@ const linkList = (r) =>
   require.ensure([], () => r(require("@/views/linkList")), "linkList");
 const about = (r) =>
   require.ensure([], () => r(require("@/views/About.vue")), "about");
-  const userList = (r) =>
+const userList = (r) =>
   require.ensure([], () => r(require("@/views/UserList.vue")), "UserList");
+const menuIndex = (r) =>
+  require.ensure([], () => r(require("@/views/menuIndex.vue")), "menuIndex");
 const routes = [
   {
     path: "/",
@@ -37,7 +39,11 @@ const routes = [
         name: "userList",
         component: userList,
       },
-      
+      {
+        path: "/menuIndex",
+        name: "menuIndex",
+        component: menuIndex,
+      },
     ],
   },
 ];

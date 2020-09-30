@@ -30,19 +30,28 @@
       <el-table-column prop="state" label="图标" show-overflow-tooltip>
         <template slot-scope="scope">
           <el-image
-            style="width: 50px; height: 40px;margin-bottom: -6px;"
+            :lazy="true"
+            style="width: 50px; height: 40px; margin-bottom: -6px"
             :src="scope.row.linkImage"
             :preview-src-list="images"
             alt=""
           />
         </template>
       </el-table-column>
-      <el-table-column fixed="right" label="操作" width="100">
+      <el-table-column align="center" label="操作" width="150">
         <template slot-scope="scope">
-          <el-button @click="handleClick(scope.row)" type="text" size="small"
+          <el-button
+            @click="showLinkInfo(scope.row.id)"
+            type="text"
+            size="small"
             >查看</el-button
           >
-          <el-button type="text" size="small" @click="dialogFormVisible = true">编辑</el-button>
+          <el-button type="text" size="small" @click="getLinkInfo(scope.row.id)"
+            >编辑</el-button
+          >
+          <el-button type="text" size="small" @click="delete scope.row.id"
+            >删除</el-button
+          >
         </template>
       </el-table-column>
     </el-table>
@@ -56,38 +65,86 @@
       :total="total"
     >
     </el-pagination>
+    <el-dialog title="查看" :visible.sync="dialogFormVisibleCk">
+      <el-form :model="linkInfo">
+        <el-form-item label="链接名称" :label-width="formLabelWidth">
+          <el-input
+            disabled
+            v-model="linkInfo.linkName"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="URL" :label-width="formLabelWidth">
+          <el-input
+            disabled
+            v-model="linkInfo.linkUrl"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="显示顺序" :label-width="formLabelWidth">
+          <el-input-number
+            v-model="linkInfo.linkOrder"
+            :min="0"
+            label="显示顺序"
+            disabled
+          ></el-input-number>
+        </el-form-item>
+        <el-form-item label="状态" :label-width="formLabelWidth">
+          <el-select disabled v-model="linkInfo.state" placeholder="状态">
+            <el-option label="有效" value="1"></el-option>
+            <el-option label="无效" value="0"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="链接类型" :label-width="formLabelWidth">
+          <el-input disabled v-model="linkInfo.typeName"></el-input>
+        </el-form-item>
+        <el-form-item label="链接图标" :label-width="formLabelWidth">
+          <el-image
+            lazy
+            fit
+            style="width: 150px; height: 140px; margin-bottom: -6px"
+            :src="linkInfo.linkImage"
+            alt=""
+            :preview-src-list="linkInfoImage"
+          />
+        </el-form-item>
+      </el-form>
+    </el-dialog>
+
     <el-dialog title="编辑" :visible.sync="dialogFormVisible">
-  <el-form :model="link">
-    <el-form-item label="链接名称" :label-width="formLabelWidth">
-      <el-input v-model="link.name" autocomplete="off"></el-input>
-    </el-form-item>
-    <el-form-item label="URL" :label-width="formLabelWidth">
-      <el-input v-model="link.name" autocomplete="off"></el-input>
-    </el-form-item>
-    <el-form-item label="显示顺序" :label-width="formLabelWidth">
-      <el-input-number v-model="link.order" @change="handleChange" :min="0" label="显示顺序"></el-input-number>
-    </el-form-item>
-    <el-form-item label="状态" :label-width="formLabelWidth">
-      <el-select v-model="link.state" placeholder="状态">
-        <el-option label="有效" value="shanghai"></el-option>
-        <el-option label="无效" value="beijing"></el-option>
-      </el-select>
-    </el-form-item>
-    <el-form-item label="链接类型" :label-width="formLabelWidth">
-      <el-select v-model="link.type" placeholder="请选择链接类型">
-        <el-option label="类型1" value="shanghai"></el-option>
-        <el-option label="类型2" value="beijing"></el-option>
-      </el-select>
-    </el-form-item>
-    <el-form-item label="链接图标" :label-width="formLabelWidth">
-      <el-input v-model="link.pcFile" autocomplete="off"></el-input>
-    </el-form-item>
-  </el-form>
-  <div slot="footer" class="dialog-footer">
-    <el-button @click="dialogFormVisible = false">取 消</el-button>
-    <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
-  </div>
-</el-dialog>
+      <el-form :model="linkInfo">
+        <el-form-item label="链接名称" :label-width="formLabelWidth">
+          <el-input v-model="linkInfo.linkName" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="URL" :label-width="formLabelWidth">
+          <el-input v-model="linkInfo.linkUrl" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="显示顺序" :label-width="formLabelWidth">
+          <el-input v-model="linkInfo.linkOrder" label="显示顺序"></el-input>
+        </el-form-item>
+        <el-form-item label="状态" :label-width="formLabelWidth">
+          <el-select v-model="linkInfo.state" placeholder="状态">
+            <el-option label="有效" value="1"></el-option>
+            <el-option label="无效" value="0"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="链接类型" :label-width="formLabelWidth">
+          <el-select v-model="linkInfo.linkType" placeholder="请选择链接类型">
+            <el-option label="类型1" value="shanghai"></el-option>
+            <el-option label="类型2" value="beijing"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="链接图标" :label-width="formLabelWidth">
+          <el-input v-model="linkInfo.linkImage" autocomplete="off"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogFormVisible = false"
+          >确 定</el-button
+        >
+      </div>
+    </el-dialog>
   </div>
 </template>
 <script>
@@ -107,17 +164,20 @@ export default {
       isChoose: false,
       countData: [],
       images: [],
+      linkInfoImage: [],
+      linkInfo: "",
       currentPage4: 4,
       dialogFormVisible: false,
-        link: {
-          name: '',
-          region: '',
-          order: 0,
-          state: '',
-          type: '',
-          pcFile: '',
-        },
-        formLabelWidth: '120px'
+      dialogFormVisibleCk: false,
+      link: {
+        name: "",
+        region: "",
+        order: 0,
+        state: "",
+        type: "",
+        pcFile: "",
+      },
+      formLabelWidth: "120px",
     };
   },
   components: {
@@ -128,13 +188,31 @@ export default {
   },
   methods: {
     handleChange(value) {
-        console.log(value);
-      },
+      console.log(value);
+    },
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);
     },
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
+    },
+    delete(id) {
+      console.log(id);
+    },
+    showLinkInfo(id) {
+      this.dialogFormVisibleCk = true;
+      axios.get("/api/link/getLinkById?id=" + id).then((res) => {
+        this.linkInfo = res.data;
+        console.log(res.data);
+        this.linkInfoImage.push(res.data.linkImage);
+      });
+    },
+    getLinkInfo(id) {
+      this.dialogFormVisible = true;
+      axios.get("/api/link/getLinkById?id=" + id).then((res) => {
+        this.linkInfo = res.data;
+        console.log(res.data);
+      });
     },
     photoList() {
       let final = [];
@@ -153,7 +231,7 @@ export default {
     handleClick(row) {
       console.log(row);
     },
-    imgScc: function() {
+    imgScc: function () {
       this.isChoose = !this.isChoose;
     },
     async getLinks() {
@@ -173,8 +251,6 @@ export default {
             table.state = link.state;
             _this.images.push(link.linkImage);
             _this.tableData.push(table);
-            console.log(_this.tableData);
-            console.log(_this.images);
           });
         });
       });
