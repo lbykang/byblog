@@ -30,7 +30,7 @@
             <template slot="title"
               ><i class="el-icon-star-on"></i>图表</template
             >
-            <el-menu-item index="visitor">用户分布</el-menu-item>
+            <el-menu-item index="dataCharts">图表信息</el-menu-item>
             <!-- <el-menu-item index="newMember">用户数据</el-menu-item> -->
           </el-submenu>
           <el-submenu index="5">
@@ -65,7 +65,7 @@
 <script>
 export default {
   computed: {
-    defaultActive: function () {
+    defaultActive: function() {
       return this.$route.path.replace("/", "");
     },
   },

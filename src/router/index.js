@@ -13,6 +13,15 @@ const userList = (r) =>
   require.ensure([], () => r(require("@/views/UserList.vue")), "UserList");
 const menuIndex = (r) =>
   require.ensure([], () => r(require("@/views/menuIndex.vue")), "menuIndex");
+const DataCharts = (r) =>
+  require.ensure([], () => r(require("@/views/DataCharts.vue")), "DataCharts");
+const AddQuestionnaire = (r) =>
+  require.ensure(
+    [],
+    () => r(require("@/views/client/AddQuestionnaire.vue")),
+    "AddQuestionnaire"
+  );
+
 const routes = [
   {
     path: "/",
@@ -44,7 +53,17 @@ const routes = [
         name: "menuIndex",
         component: menuIndex,
       },
+      {
+        path: "/dataCharts",
+        name: "DataCharts",
+        component: DataCharts,
+      },
     ],
+  },
+  {
+    path: "/addQuestionnaire",
+    component: AddQuestionnaire,
+    name: "AddQuestionnaire",
   },
 ];
 
