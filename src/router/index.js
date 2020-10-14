@@ -21,7 +21,9 @@ const AddQuestionnaire = (r) =>
     () => r(require("@/views/client/AddQuestionnaire.vue")),
     "AddQuestionnaire"
   );
-
+  const kjtz = (r) =>
+  require.ensure([], () => r(require("@/views/kjtz.vue")), "kjtz");
+  
 const routes = [
   {
     path: "/",
@@ -65,6 +67,12 @@ const routes = [
     component: AddQuestionnaire,
     name: "AddQuestionnaire",
   },
+  {
+    path: "/kjtz",
+    component: kjtz,
+    name: "kjtz",
+  },
+  
 ];
 
 const router = new VueRouter({
