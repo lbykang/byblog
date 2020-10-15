@@ -23,7 +23,14 @@ const AddQuestionnaire = (r) =>
   );
   const kjtz = (r) =>
   require.ensure([], () => r(require("@/views/kjtz.vue")), "kjtz");
-  
+  const qsEdit = (r) =>
+  require.ensure([], () => r(require("@/views/client/QS-edit.vue")), "qsEdit");
+
+
+
+import qsList from '@/views/client/QS-list.vue'
+import qsData from '@/views/client/QS-data.vue'
+import qsFill from '@/views/client/QS-fill.vue'
 const routes = [
   {
     path: "/",
@@ -72,7 +79,26 @@ const routes = [
     component: kjtz,
     name: "kjtz",
   },
-  
+  {
+    path: '/data',
+    name: 'qsData',
+    component: qsData
+  },
+  {
+    path: '/qsList',
+    name: 'qsList',
+    component: qsList
+  },
+  {
+    path: '/fill/:num',
+    name: 'qsFill',
+    component: qsFill
+  },
+  {
+    path: '/qsEdit',
+    name: 'qsEdit',
+    component: qsEdit
+  }
 ];
 
 const router = new VueRouter({

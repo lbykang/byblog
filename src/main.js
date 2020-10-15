@@ -9,7 +9,10 @@ import echarts from "echarts";
 
 Vue.prototype.$echarts = echarts;
 Vue.prototype.$axios = axios;
+import FormMaking from 'form-making'
+import 'form-making/dist/FormMaking.css'
 
+Vue.use(FormMaking)
 Vue.use(ElementUI);
 Vue.config.productionTip = false;
 
