@@ -184,4 +184,5 @@ import 'echarts/lib/component/toolbox'
 
 <style lang="scss" scoped>
 @import '../../style/QS-data';
+@import "../../style/app";
 </style>

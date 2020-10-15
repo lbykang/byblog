@@ -15,12 +15,6 @@ const menuIndex = (r) =>
   require.ensure([], () => r(require("@/views/menuIndex.vue")), "menuIndex");
 const DataCharts = (r) =>
   require.ensure([], () => r(require("@/views/DataCharts.vue")), "DataCharts");
-const AddQuestionnaire = (r) =>
-  require.ensure(
-    [],
-    () => r(require("@/views/client/AddQuestionnaire.vue")),
-    "AddQuestionnaire"
-  );
   const kjtz = (r) =>
   require.ensure([], () => r(require("@/views/kjtz.vue")), "kjtz");
   const qsEdit = (r) =>
@@ -70,11 +64,6 @@ const routes = [
     ],
   },
   {
-    path: "/addQuestionnaire",
-    component: AddQuestionnaire,
-    name: "AddQuestionnaire",
-  },
-  {
     path: "/kjtz",
     component: kjtz,
     name: "kjtz",
@@ -95,7 +84,7 @@ const routes = [
     component: qsFill
   },
   {
-    path: '/qsEdit',
+    path: '/qsEdit/:num',
     name: 'qsEdit',
     component: qsEdit
   }

@@ -232,4 +232,5 @@ import storage from '../../store.js'
 
 <style lang="scss" scoped>
 @import '../../style/QS-list';
+@import "../../style/app";
 </style>

@@ -355,4 +355,5 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../style/QS-edit';
+@import "../../style/app";
 </style>
