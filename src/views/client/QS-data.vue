@@ -173,7 +173,7 @@ import 'echarts/lib/component/toolbox'
         myChart.setOption(option)
       },
       goBack() {
-        this.$router.push({path:'/'})
+        this.$router.push({path:'/qsList'})
       }
     },
     watch: {

@@ -1,34 +1,34 @@
 $orange: #ee7419;
 $lightorange: #fcf0e5;
 .fill-container {
-  width: 100rem;
-  margin: 5rem auto;
-  padding: 5rem;
+  width: 50rem;
+  margin: 2.5rem auto;
+  padding: 2.5rem;
   color: #666;
   background-color: #fff;
-  border-radius: .4rem;
+  border-radius: 0.2rem;
   box-shadow: 0 0 1rem #aaa;
   h2 {
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
     text-align: center;
-    font-size: 2rem;
+    font-size: 1rem;
     color: #555;
   }
   .back {
-    font-size: 1.6rem;
+    font-size: 0.8rem;
     cursor: pointer;
     &:hover {
       color: $orange;
     }
   }
   .content {
-    padding: 3rem;
+    padding: 1.5rem;
     border: {
-      top: .2rem solid #ccc;
-      bottom: .2rem solid #ccc;
+      top: 0.1rem solid #ccc;
+      bottom: 0.1rem solid #ccc;
     }
   }
-  .content-item{
+  .content-item {
     padding: 1.5rem 2rem;
     &:hover {
       background-color: $lightorange;
@@ -41,13 +41,13 @@ $lightorange: #fcf0e5;
         }
       }
       textarea {
-        width: 35rem;
-        height: 15rem;
+        width: 17.5rem;
+        height: 7.5rem;
         margin-left: 2.5rem;
       }
     }
     .qs-title {
-      font-size: 1.6rem;
+      font-size: 0.8rem;
       font-weight: 700;
       color: #333;
     }
@@ -56,21 +56,21 @@ $lightorange: #fcf0e5;
     }
   }
   footer {
-    height: 6rem;
-    margin-top: 3rem;
+    height: 3rem;
+    margin-top: 1.5rem;
     text-align: center;
-    line-height: 6rem;
+    line-height: 3rem;
     .submit {
-      width: 10rem;
-      height: 3rem;
+      width: 5rem;
+      height: 1.5rem;
       padding: {
-        top: .3rem;
-        bottom: .3rem;
+        top: 0.15rem;
+        bottom: 0.15rem;
       }
       line-height: 100%;
       color: #fff;
-      border: .1rem solid $orange;
-      border-radius: .2rem;
+      border: 0.1rem solid $orange;
+      border-radius: 0.2rem;
       background-color: $orange;
       cursor: pointer;
       &:hover {
@@ -78,11 +78,13 @@ $lightorange: #fcf0e5;
       }
     }
   }
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity .5s
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s;
   }
-  .fade-enter, .fade-leave-active {
-    opacity: 0
+  .fade-enter,
+  .fade-leave-active {
+    opacity: 0;
   }
   .dialog {
     position: fixed;
@@ -90,33 +92,33 @@ $lightorange: #fcf0e5;
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(85, 85, 85, .7);
+    background: rgba(85, 85, 85, 0.7);
     .submit-dialog {
       position: absolute;
       left: 50%;
       top: 50%;
-      width: 40rem;
-      height: 20rem;
+      width: 20rem;
+      height: 10rem;
       transform: translateX(-50%) translateY(-50%);
-      border-radius: .5rem;
+      border-radius: 0.25rem;
       box-shadow: 0 0 5px #555;
       background-color: #fff;
     }
     header {
-      height: 5rem;
+      height: 2.5rem;
       padding: {
-        left: 3rem;
-        right: 3rem;
+        left: 1.5rem;
+        right: 1.5rem;
       }
-      line-height: 5rem;
-      border-radius: .5rem;
+      line-height: 2.5rem;
+      border-radius: 0.25rem;
       background-color: #f7f7f7;
       span:nth-of-type(1) {
         font-weight: 700;
       }
       .close-btn {
         position: absolute;
-        right: 3rem;
+        right: 1.5rem;
         color: #bbb;
         cursor: pointer;
         &:hover {
@@ -125,21 +127,21 @@ $lightorange: #fcf0e5;
       }
     }
     .submit-dialog p {
-      margin-top: 3rem;
-      margin-left: 3rem;
+      margin-top: 1.5rem;
+      margin-left: 1.5rem;
     }
     .btn-box {
       button {
-        width: 7rem;
-        height: 2.5rem;
+        width: 3.5rem;
+        height: 1.75rem;
         padding: {
-          top: .3rem;
-          bottom: .3rem;
+          top: 0.15rem;
+          bottom: 0.15rem;
         }
         line-height: 100%;
         color: #777;
         border: 1px solid #555;
-        border-radius: .2rem;
+        border-radius: 0.1rem;
         background-color: #fff;
         cursor: pointer;
         &:hover {
@@ -149,9 +151,9 @@ $lightorange: #fcf0e5;
       position: absolute;
       bottom: 0;
       width: 100%;
-      height: 6rem;
+      height: 3rem;
       text-align: center;
-      line-height: 6rem;
+      line-height: 3rem;
       .yes {
         margin-right: 1rem;
         color: #fff;
