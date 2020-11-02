@@ -25,7 +25,7 @@
 
       <div class="welcome">
         <!-- <img src="http://129.204.226.230/images/rabbit.png" alt /> -->
-        <span>欢迎使用-LinksTools</span>
+        <span>欢迎使用- </span>
       </div>
       <div class="head">
         <template>

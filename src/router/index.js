@@ -84,7 +84,7 @@ const routes = [
     component: qsFill
   },
   {
-    path: '/qsEdit/:num',
+    path: '/qsEdit/:nume',
     name: 'qsEdit',
     component: qsEdit
   }
