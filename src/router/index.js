@@ -1,12 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
 
 Vue.use(VueRouter);
 const menu = (r) =>
   require.ensure([], () => r(require("@/views/menu")), "menu");
-const linkList = (r) =>
-  require.ensure([], () => r(require("@/views/linkList")), "linkList");
 const about = (r) =>
   require.ensure([], () => r(require("@/views/About.vue")), "about");
 const userList = (r) =>
@@ -28,8 +25,8 @@ import qsFill from '@/views/client/QS-fill.vue'
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: Home,
+    name: 'qsList',
+    component: qsList
   },
   {
     path: "/menu",
@@ -40,11 +37,6 @@ const routes = [
         path: "",
         component: about,
         meta: [],
-      },
-      {
-        path: "/linkList",
-        name: "linkList",
-        component: linkList,
       },
       {
         path: "/userList",
